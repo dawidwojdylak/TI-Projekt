@@ -1,48 +1,47 @@
 function draw() {
+	
+	let it_num = document.getElementById("it_spin_box").value;
+	if (it_num > 1000000 || it_num < 0)
+	{
+		alert("Please enter a number in range from 0 to 1'000'000");
+		return;
+	}
 	const canvas = document.getElementById("graphCanvas");
 	const ctx = canvas.getContext("2d");
 	ctx.fillStyle = "#FF0000";
-	canvas.height = canvas.width;
-	ctx.transform(1, 0, 0, -1, 0, canvas.height)
+	// canvas.height = canvas.width;
+	canvas.height = 400;
+	canvas.width = 400;
+	ctx.transform(1, 0, 0, -1, 0, canvas.height);
+
 	
-	let xMax = canvas.height;
-	let yMax = canvas.width;
-	let slope = 1.2;
-	let intercept = 70;
-	
-	// const xArray = [50,60,70,80,90,100,110,120,130,140,150];
-	// const yArray = [7,8,8,9,9,9,10,11,14,14,15];
 	let xArray = [];
 	let yArray = [];
-	// canvas rectangle
 	let rect = canvas.getBoundingClientRect();
-	console.log(rect);
-	for (let i = 0; i < 1000; i++)
+	let apices = [[0, 0], [rect.width, 0], [rect.width/2, rect.height]];
+	let currentPoint = [0, 0];
+	let currentApex;
+	
+	for (let i = 0; i < it_num; i++)
 	{
-		xArray.push(random(0, rect.width));
-		yArray.push(random(0, rect.height));
+		xArray.push(currentPoint[0]);
+		yArray.push(currentPoint[1]);
+		currentApex = apices[Math.floor(Math.random() * apices.length)]
+		currentPoint[0] = (currentPoint[0] + currentApex[0]) / 2;
+		currentPoint[1] = (currentPoint[1] + currentApex[1]) / 2;
 	}
+	
+	
 
 // Plot Scatter
-	ctx.fillStyle = "red";
+	ctx.fillStyle = document.getElementById("color_input").value;
 	for (let i = 0; i < xArray.length-1; i++) {
-		let x = xArray[i]*xMax/150;
-		let y = yArray[i]*yMax/15;
+		let x = xArray[i];
+		let y = yArray[i];
 		ctx.beginPath();
-		ctx.ellipse(x, y, 3, 3, 0, 0, Math.PI * 2);
+		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
 		ctx.fill();
 	}
-
-// // Plot Line
-// 	ctx.moveTo(0, intercept);
-// 	ctx.lineTo(xMax, f(xMax));
-// 	ctx.strokeStyle = "black";
-// 	ctx.stroke();
-//
-// // Line Function<br>
-// 	function f(x) {
-// 		return x * slope + intercept;
-// 	}
 }
 
 function random(min, max)
@@ -50,6 +49,14 @@ function random(min, max)
 	return Math.random() * (max - min) + min;
 }
 
-// wait for the HTML to load
-// document.addEventListener('DOMContentLoaded', init)
+function test1()
+{
+	const canvas = document.getElementById("graphCanvas");
+	const ctx = canvas.getContext("2d");
+	ctx.rect(100, 100, 20, 30);
+	ctx.fill();
+}
+
+
+
 
