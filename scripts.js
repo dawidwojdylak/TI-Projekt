@@ -1,11 +1,18 @@
 function draw() {
 	
+	if (typeof(Worker) == "undefined")
+	{
+		alert("Unfortunately this browser does not support Web Workers");
+		return;
+	}
+	
 	let it_num = document.getElementById("it_spin_box").value;
 	if (it_num > 1000000 || it_num < 0)
 	{
 		alert("Please enter a number in range from 0 to 1'000'000");
 		return;
 	}
+	
 	const canvas = document.getElementById("graphCanvas");
 	const ctx = canvas.getContext("2d");
 	ctx.fillStyle = "#FF0000";
@@ -13,11 +20,27 @@ function draw() {
 	canvas.height = 400;
 	canvas.width = 400;
 	ctx.transform(1, 0, 0, -1, 0, canvas.height);
-
 	
+	let temp = sierpinski(canvas, it_num);
+	let xArray = temp[0];
+	let yArray = temp[1];
+
+// Plot Scatter
+	ctx.fillStyle = document.getElementById("color_input").value;
+	for (let i = 0; i < xArray.length-1; i++) {
+		let x = xArray[i];
+		let y = yArray[i];
+		ctx.beginPath();
+		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
+		ctx.fill();
+	}
+}
+
+function sierpinski(canv, it_num)
+{
 	let xArray = [];
 	let yArray = [];
-	let rect = canvas.getBoundingClientRect();
+	let rect = canv.getBoundingClientRect();
 	let apices = [[0, 0], [rect.width, 0], [rect.width/2, rect.height]];
 	let currentPoint = [0, 0];
 	let currentApex;
@@ -31,17 +54,7 @@ function draw() {
 		currentPoint[1] = (currentPoint[1] + currentApex[1]) / 2;
 	}
 	
-	
-
-// Plot Scatter
-	ctx.fillStyle = document.getElementById("color_input").value;
-	for (let i = 0; i < xArray.length-1; i++) {
-		let x = xArray[i];
-		let y = yArray[i];
-		ctx.beginPath();
-		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
-		ctx.fill();
-	}
+	return [xArray, yArray];
 }
 
 function random(min, max)
