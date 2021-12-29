@@ -21,41 +21,35 @@ function draw() {
 	canvas.width = 400;
 	ctx.transform(1, 0, 0, -1, 0, canvas.height);
 	
-	let temp = sierpinski(canvas, it_num);
-	let xArray = temp[0];
-	let yArray = temp[1];
-
-// Plot Scatter
-	ctx.fillStyle = document.getElementById("color_input").value;
-	for (let i = 0; i < xArray.length-1; i++) {
-		let x = xArray[i];
-		let y = yArray[i];
-		ctx.beginPath();
-		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
-		ctx.fill();
-	}
-}
-
-function sierpinski(canv, it_num)
-{
-	let xArray = [];
-	let yArray = [];
-	let rect = canv.getBoundingClientRect();
-	let apices = [[0, 0], [rect.width, 0], [rect.width/2, rect.height]];
-	let currentPoint = [0, 0];
-	let currentApex;
-	
-	for (let i = 0; i < it_num; i++)
+	let sierpinskiWorker = new Worker('sierpinski.js');
+	sierpinskiWorker.postMessage([canvas, it_num]);
+	sierpinskiWorker.onmessage = function (msg)
 	{
-		xArray.push(currentPoint[0]);
-		yArray.push(currentPoint[1]);
-		currentApex = apices[Math.floor(Math.random() * apices.length)]
-		currentPoint[0] = (currentPoint[0] + currentApex[0]) / 2;
-		currentPoint[1] = (currentPoint[1] + currentApex[1]) / 2;
+		console.log("onmessage");
+		let xArray = msg[0];
+		let yArray = msg[1];
+		
+		// Plot Scatter
+		ctx.fillStyle = document.getElementById("color_input").value;
+		for (let i = 0; i < xArray.length-1; i++) {
+			let x = xArray[i];
+			let y = yArray[i];
+			ctx.beginPath();
+			ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
+			ctx.fill();
 	}
 	
-	return [xArray, yArray];
+	// let temp = sierpinski([canvas, it_num]);
+	// let xArray = temp[0];
+	// let yArray = temp[1];
+	
+	}
 }
+
+// function sierpinski(canv, it_num)
+// {
+
+// }
 
 function random(min, max)
 {
