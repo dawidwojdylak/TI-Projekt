@@ -12,8 +12,8 @@ function draw() {
 	// ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "#FF0000";
 	// canvas.height = canvas.width;
-	canvas.height = 500;
-	canvas.width = 500;
+	canvas.height = 600;
+	canvas.width = 600;
 	ctx.transform(1, 0, 0, -1, 0, canvas.height);
 
 	let rect = canvas.getBoundingClientRect();
@@ -33,7 +33,7 @@ function draw() {
 		let x = xArray[i];
 		let y = yArray[i];
 		ctx.beginPath();
-		ctx.ellipse(x, y, 2.1, 2.1, 0, 0, Math.PI * 2);
+		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
 		ctx.fill();
 	}
 }
@@ -80,8 +80,8 @@ function barnsleyFern(rect, max_it)
 	let y = 0.;
 	for (let i = 0 ; i < max_it; ++i)
 	{
-		xArray.push(x);
-		yArray.push(y);
+		xArray.push(x * rect.width / 10 + rect.width / 2);
+		yArray.push(y * rect.height / 10);
 		let temp = getRandomPoint(x, y);
 		x = temp[0];
 		y = temp[1];
@@ -89,9 +89,12 @@ function barnsleyFern(rect, max_it)
 	
 	// resize plot to canvas size
 	let max = Math.max(...xArray);
-	xArray = xArray * rect.width / max;
+	// xArray = xArray * rect.width / max;
 	max = Math.max(...yArray);
-	yArray = yArray * rect.height / max;
+	// yArray = yArray * rect.height / max;
+	
+	// xArray = xArray;
+	// yArray = yArray;
 	
 	return [xArray, yArray];
 }
