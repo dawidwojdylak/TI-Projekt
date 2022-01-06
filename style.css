@@ -24,8 +24,8 @@ button:hover {
 }
 
 canvas {
-    /*background: #45494a;*/
-    background: #85b8c5;
+    background: #45494a;
+    /*background: #85b8c5;*/
     padding: 0;
     margin: 0 auto;
     margin-bottom: 1rem;

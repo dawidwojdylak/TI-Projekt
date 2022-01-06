@@ -80,8 +80,8 @@ function barnsleyFern(rect, max_it)
 	let y = 0.;
 	for (let i = 0 ; i < max_it; ++i)
 	{
-		xArray.push(x * rect.width / 10 + rect.width / 2);
-		yArray.push(y * rect.height / 10);
+		xArray.push(x * rect.width * .16 + rect.width / 2);
+		yArray.push(y * rect.height * .1);
 		let temp = getRandomPoint(x, y);
 		x = temp[0];
 		y = temp[1];
@@ -102,14 +102,6 @@ function barnsleyFern(rect, max_it)
 function random(min, max)
 {
 	return Math.random() * (max - min) + min;
-}
-
-function test1()
-{
-	const canvas = document.getElementById("graphCanvas");
-	const ctx = canvas.getContext("2d");
-	ctx.rect(100, 100, 20, 30);
-	ctx.fill();
 }
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TI Projekt 1</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
     <script src="scripts.js"></script>
 </head>
 <body>
@@ -13,12 +13,14 @@
     </header>
 
     <div class="sidebar">
-
-        <label for="it_spin_box">Number of iterations: </label>
-        <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" size="7">
-        <label for="color_input">Select scatter color: </label>
-        <input id="color_input" type="color" value="#f8f8f8" >
-
+        <form class="standard_form">
+            <label for="it_spin_box">Number of iterations: </label>
+            <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" size="7">
+        </form>
+        <form class="standard_form">
+            <label for="color_input">Select scatter color: </label>
+            <input onchange="draw()" id="color_input" type="color" value="#f8f8f8" >
+        </form>
         <form class="standard_form">
             <label for="sel_frac">Select drawing:</label>
             <select name="selected_fractals" id="sel_frac">
@@ -26,8 +28,10 @@
                 <option value="barnsleyFern">Barnsley Fern</option>
             </select>
         </form>
-        <button  onclick="draw()">Draw</button>
-        <button  onclick="test1()">TestButton</button>
+
+            <button  onclick="draw()">Draw</button>
+
+
 
     </div>
 
