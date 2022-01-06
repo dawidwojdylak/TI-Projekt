@@ -1,6 +1,5 @@
 function draw() {
-	let xArray = [];
-	let yArray = [];
+
 	let it_num = document.getElementById("it_spin_box").value;
 	if (it_num > 1000000 || it_num < 0)
 	{
@@ -8,11 +7,11 @@ function draw() {
 		return;
 	}
 	
-	var htmlCanvas = document.getElementById("graphCanvas");
-	var offscreen = htmlCanvas.transferControlToOffscreen();
+	const htmlCanvas = document.getElementById("graphCanvas");
+	const offscreen = htmlCanvas.transferControlToOffscreen();
 	
-	var worker = new Worker("offscreencanvas.js");
-	worker.postMessage({canvas: offscreen}, [offscreen]);
+	const worker = new Worker("offscreencanvas.js");
+	worker.postMessage([{canvas: offscreen}], [offscreen]);
 	
 	
 	

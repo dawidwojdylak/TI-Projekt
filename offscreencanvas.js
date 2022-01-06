@@ -3,36 +3,40 @@ onmessage = function (evt)
 	// const canvas = document.getElementById("graphCanvas");
 	// const ctx = canvas.getContext("2d");
 	
-	const canvas = evt.data.canvas;
+	let xArray = [];
+	let yArray = [];
+	
+	const canvas = evt[0].data.canvas;
+	const it_num = evt[1];
 	const ctx = canvas.getContext("2d")
 	
-// 	// ctx.clearRect(0, 0, canvas.width, canvas.height);
-// 	ctx.fillStyle = "#FF0000";
-// 	// canvas.height = canvas.width;
-// 	canvas.height = 600;
-// 	canvas.width = 600;
-// 	ctx.transform(1, 0, 0, -1, 0, canvas.height);
-//
-// 	let rect = canvas.getBoundingClientRect();
-// 	let temp;
-//
-// 	if (document.getElementById("sel_frac").value === "sierpinski")
-// 		temp = sierpinski(rect, it_num);
-// 	else if (document.getElementById("sel_frac").value === "barnsleyFern")
-// 		temp = barnsleyFern(rect, it_num);
-//
-// 	xArray = temp[0];
-// 	yArray = temp[1];
-//
-// // Plot Scatter
-// 	ctx.fillStyle = document.getElementById("color_input").value;
-// 	for (let i = 0; i < xArray.length-1; i++) {
-// 		let x = xArray[i];
-// 		let y = yArray[i];
-// 		ctx.beginPath();
-// 		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
-// 		ctx.fill();
-// 	}
+	// ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.fillStyle = "#FF0000";
+	// canvas.height = canvas.width;
+	canvas.height = 600;
+	canvas.width = 600;
+	ctx.transform(1, 0, 0, -1, 0, canvas.height);
+
+	let rect = canvas.getBoundingClientRect();
+	let temp;
+
+	if (document.getElementById("sel_frac").value === "sierpinski")
+		temp = sierpinski(rect, it_num);
+	else if (document.getElementById("sel_frac").value === "barnsleyFern")
+		temp = barnsleyFern(rect, it_num);
+
+	xArray = temp[0];
+	yArray = temp[1];
+
+// Plot Scatter
+	ctx.fillStyle = document.getElementById("color_input").value;
+	for (let i = 0; i < xArray.length-1; i++) {
+		let x = xArray[i];
+		let y = yArray[i];
+		ctx.beginPath();
+		ctx.ellipse(x, y, .1, .1, 0, 0, Math.PI * 2);
+		ctx.fill();
+	}
 }
 
 
