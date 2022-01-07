@@ -12,36 +12,59 @@
         <h2>Techniki Internetowe - Projekt 1</h2>
     </header>
 
-    <div class="sidebar">
-        <form class="standard_form">
-            <label for="it_spin_box">Number of iterations: </label>
-            <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" size="7">
-        </form>
-        <form class="standard_form">
-            <label for="color_input">Select scatter color: </label>
-            <input onchange="draw()" id="color_input" type="color" value="#f8f8f8" >
-        </form>
-        <form class="standard_form">
-            <label for="sel_frac">Select drawing:</label>
-            <select name="selected_fractals" id="sel_frac">
-                <option value="sierpinski">Sierpinski Triangle</option>
-                <option value="barnsleyFern">Barnsley Fern</option>
-            </select>
-        </form>
-
-            <button  onclick="draw()">Draw</button>
+    <div>
 
 
+        <div class="sidebar">
+            <form class="standard_form">
+                <label for="it_spin_box">Number of iterations: </label>
+                <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" size="7">
+            </form>
+            <form class="standard_form">
+                <label for="color_input">Select scatter color: </label>
+                <input onchange="draw()" id="color_input" type="color" value="#f8f8f8" >
+            </form>
+            <form class="standard_form">
+                <label for="sel_frac">Select drawing:</label>
+                <select name="selected_fractals" id="sel_frac">
+                    <option value="sierpinski">Sierpinski Triangle</option>
+                    <option value="barnsleyFern">Barnsley Fern</option>
+                    <option value="pentagon">Pentagon</option>
+                </select>
+            </form>
+
+                <button  onclick="draw()">Draw</button>
+
+            <form class="standard_form">
+                <label for="plotSize">Plot size:</label>
+                <input oninput="resizeCanvas(this.value)" type="range" min="100" max="800" value="600" class="slider" id="plotSize">
+            </form>
+
+            <button  onclick="about_disp()">About</button>
+
+
+        </div>
+
+
+        <article class="main">
+            <canvas id="graphCanvas"></canvas>
+        </article>
+
+        <div class="pop-up" id="info">
+            <input type="button" class="close-icon" onclick="about_hide()">
+            <article>
+                <h3>Fraktale</h3>
+                <p>Słowo fraktal pochodzi od łacińskiego słowa <i>fractus</i>, co
+                    oznacza cząstkowy, ułamkowy. Tłumaczy to, czym są fraktale - nieskończonymi obiektami, które najczęściej są do siebie podobne.
+                Ze względu na ich różnorodność matematycy nie definiują jednoznacznej definicji, a jedynie podają najczęściej występujące cechy. </p>
+            </article>
+        </div>
+        <div onclick="about_hide()" class="dark" id="sub_info"></div>
 
     </div>
 
-
-    <article class="main">
-        <canvas id="graphCanvas"></canvas>
-    </article>
-
     <footer>
-        Dawid Wojdylak, 2021
+        Dawid Wojdylak, 2022
     </footer>
 
 

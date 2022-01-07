@@ -4,6 +4,7 @@ function draw() {
 	
 	const sierpinskiWorker = new Worker('./sierpinski.js');
 	const barnsleyfernWorker = new Worker('./barnsleyfern.js');
+	const pentagonWorker = new Worker('./pentagon.js');
 	
 	let it_num = document.getElementById("it_spin_box").value;
 	if (it_num > 1000000 || it_num < 0)
@@ -11,13 +12,16 @@ function draw() {
 		alert("Please enter a number in range from 0 to 1'000'000");
 		return;
 	}
+	
+	let plot_size = document.getElementById("plotSize").value;
+	// console.log(plot_size);
 	const canvas = document.getElementById("graphCanvas");
 	const ctx = canvas.getContext("2d");
 	// ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "#FF0000";
 	// canvas.height = canvas.width;
-	canvas.height = 600;
-	canvas.width = 600;
+	canvas.height = plot_size;
+	canvas.width = plot_size;
 	ctx.transform(1, 0, 0, -1, 0, canvas.height);
 	ctx.fillStyle = document.getElementById("color_input").value;
 
@@ -28,15 +32,22 @@ function draw() {
 		sierpinskiWorker.postMessage([600, 600, it_num]);
 		// temp = sierpinski(rect, it_num);
 	else if (document.getElementById("sel_frac").value === "barnsleyFern")
-		barnsleyfernWorker.postMessage([600, 600, it_num]);
+		barnsleyfernWorker.postMessage([plot_size, plot_size, it_num]);
 		// temp = barnsleyFern(rect, it_num);
-	
+	else if (document.getElementById("sel_frac").value === "pentagon")
+		pentagonWorker.postMessage([600, 600, it_num]);
+		
 	sierpinskiWorker.onmessage = function (evt)
 	{
 		plot(evt.data[0], evt.data[1]);
 	}
 	
 	barnsleyfernWorker.onmessage = function (evt)
+	{
+		plot(evt.data[0], evt.data[1]);
+	}
+	
+	pentagonWorker.onmessage = function (evt)
 	{
 		plot(evt.data[0], evt.data[1]);
 	}
@@ -59,10 +70,24 @@ function draw() {
 
 }
 
+function resizeCanvas(val)
+{
+	console.log(val);
+	// let canvas = document.getElementById("graphCanvas");
+	// canvas.height = val;
+	// canvas.width = val;
+}
 
+function about_disp()
+{
+	document.getElementById('info').style.display='block';
+	document.getElementById('sub_info').style.display='block';
+}
 
-
-
-
+function about_hide()
+{
+	document.getElementById('info').style.display='none';
+	document.getElementById('sub_info').style.display='none';
+}
 
 
