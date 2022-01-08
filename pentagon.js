@@ -24,8 +24,8 @@ function pentagon(width, height, it_num)
 		xArray.push(currentPoint[0]);
 		yArray.push(currentPoint[1]);
 		currentApex = apices[Math.floor(Math.random() * apices.length)]
-		currentPoint[0] = (currentPoint[0] + currentApex[0]) / 2;
-		currentPoint[1] = (currentPoint[1] + currentApex[1]) / 2;
+		currentPoint[0] = (currentPoint[0] + currentApex[0]) / 6;
+		currentPoint[1] = (currentPoint[1] + currentApex[1]) / 6;
 	}
 	
 	return [xArray, yArray];

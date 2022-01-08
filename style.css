@@ -48,7 +48,7 @@ header {
     position: absolute;
     width: 240px;
     /*top: 0;*/
-    left: 0;
+    /*left: 0;*/
     /*z-index: 1;*/
     overflow-x: hidden; /*disable scroll*/
     padding: 25px;
@@ -63,7 +63,7 @@ header {
 
 footer {
     position: absolute;
-    left:0;
+    /*left:0;*/
     bottom: 0;
     overflow: hidden;
     width: 100%;
@@ -92,10 +92,17 @@ footer {
     width: 50%;
     height: 50%;
     padding: 16px;
-    border: 16px solid orange;
-    background-color: white;
+    border: 4px solid #375a86;
+    background-color: #c3daf8;
     z-index: 1002;
     overflow: auto;
+    
+}
+
+.pop-up img {
+    width: 300px;
+    text-align: center;
+    margin: auto;
 }
 
 .dark {

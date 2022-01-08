@@ -5,6 +5,9 @@
     <title>TI Projekt 1</title>
     <link rel="stylesheet" href="style.css">
     <script src="scripts.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -17,30 +20,30 @@
 
         <div class="sidebar">
             <form class="standard_form">
-                <label for="it_spin_box">Number of iterations: </label>
+                <label for="it_spin_box">Liczba iteracji: </label>
                 <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" size="7">
             </form>
             <form class="standard_form">
-                <label for="color_input">Select scatter color: </label>
+                <label for="color_input">Kolor pikseli: </label>
                 <input onchange="draw()" id="color_input" type="color" value="#f8f8f8" >
             </form>
             <form class="standard_form">
-                <label for="sel_frac">Select drawing:</label>
+                <label for="sel_frac">Wybór rysunku:</label>
                 <select name="selected_fractals" id="sel_frac">
-                    <option value="sierpinski">Sierpinski Triangle</option>
-                    <option value="barnsleyFern">Barnsley Fern</option>
+                    <option value="sierpinski">Trójkąt Sierpinskiego</option>
+                    <option value="barnsleyFern">Paproć Barnsleya</option>
                     <option value="pentagon">Pentagon</option>
                 </select>
             </form>
 
-                <button  onclick="draw()">Draw</button>
+                <button  onclick="draw()">Rysuj</button>
 
             <form class="standard_form">
-                <label for="plotSize">Plot size:</label>
+                <label for="plotSize">Rozmiar rysunku:</label>
                 <input oninput="resizeCanvas(this.value)" type="range" min="100" max="800" value="600" class="slider" id="plotSize">
             </form>
 
-            <button  onclick="about_disp()">About</button>
+            <button  onclick="about_disp()">O projekcie</button>
 
 
         </div>
@@ -57,6 +60,43 @@
                 <p>Słowo fraktal pochodzi od łacińskiego słowa <i>fractus</i>, co
                     oznacza cząstkowy, ułamkowy. Tłumaczy to, czym są fraktale - nieskończonymi obiektami, które najczęściej są do siebie podobne.
                 Ze względu na ich różnorodność matematycy nie definiują jednoznacznej definicji, a jedynie podają najczęściej występujące cechy. </p>
+                <img title="Zbiór Mandelbrota" src="images/Mandel.jpg" alt="Zbiór Mandelbrota">
+                <p>Powyższy rysunek przedstawia tzw. zbiór Mandelbrota. Jest to jeden z najpopularniejszych fraktali. Po raz pierwszy zdefiniowany
+                i narysowany przez Roberta W. Brooksa w 1978 roku.</p>
+            </article>
+
+            <article>
+                <h3>Gra w chaos</h3>
+                <p>Jest to matematyczne pojęcie, które opisuje specyficzny sposób wytwarzania fraktali. W ogólności polega na
+                tym, że startując od dowolnego punktu losujemy wierzchołek wielokąta i stawiamy nowy punkt w ułamku odległości pomiędzy
+                poprzednimi punktami. Następnie wyznaczamy kolejny punkt pomiędzy otrzymanym punktem, a losowym wierzchołkiem.
+                Po odpowiednio dużej ilości iteracji tworzy się fraktal. Taką technikę zastosowano w tym projekcie.
+
+                </p>
+
+<!--                <img src="images/Sierpinski_Chaos.gif">-->
+            </article>
+
+            <article>
+                <h3>Trójkąt Sierpińskiego</h3>
+                <p>
+                    Trójkąt Sierpnińskiego został odkryty przez polskiego matematyka Wacława Sierpińskiego w 1915 roku, czyli
+                    znacznie wcześniej niż nieco bardziej znany zbiór Mandelbrota. W przeciwieństwie do Mandelbrota trójkąt Sierpniśkiego jest
+                    samopodobny. Został wygenerowany zgodnie z zasadami gry w chaos, gdzie ułamek odległości pomiędzy punktami wynosił 0.5.
+                </p>
+
+                <img src="images/Sierpinski-zoom.gif" alt="">
+            </article>
+
+            <article>
+                <h3>Paproć Barnsleya</h3>
+                Jest to kolejny fraktal, który odkrył Michael F. Barnsley. Jego nazwa bierze się z podobieństwa do liści paproci.
+                Został wygenerowany z prawdopodobieństwem odpowiednio 85%, 7%, 7%, 1% ze wzorów:
+                <p><span class="math inline">\(f_1(x,y) = (0.85x + 0.04y, -0.04x + 0.85y + 1.6)\)</span></p>
+                <p><span class="math inline">\(f_2(x,y) = (-0.15x + 0.25y, 0.26x + 0.24y + 0.44)\)</span></p>
+                <p><span class="math inline">\(f_3(x,y) = (0.2 x + 0.26y, 0.23x + 0.22y + 1.6)\)</span></p>
+                <p><span class="math inline">\(f_4(x,y) = (0, 0.16y)\)</span></p>
+                <img src="images/zlotapaproc.png" alt="">
             </article>
         </div>
         <div onclick="about_hide()" class="dark" id="sub_info"></div>
