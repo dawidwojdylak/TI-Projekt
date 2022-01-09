@@ -157,3 +157,6 @@ footer {
     /*transition: all 0.3s ease;*/
 }
 
+#sizebar {
+    display: none;
+}

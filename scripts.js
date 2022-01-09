@@ -97,7 +97,14 @@ function doc_disp()
 	document.getElementById('sub_info').style.display='block';
 }
 
-
+function size_bar_disp()
+{
+	let status = document.getElementById('sel_frac').value;
+	if (status === "barnsleyFern")
+		document.getElementById('sizebar').style.display='block';
+	else
+		document.getElementById('sizebar').style.display='none';
+}
 
 
 

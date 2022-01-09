@@ -21,7 +21,7 @@
         <div class="sidebar">
             <form class="standard_form">
                 <label for="it_spin_box">Liczba iteracji: </label>
-                <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" size="7">
+                <input id="it_spin_box" type="number" min="100" max="1000000" step="100" value="40000" >
             </form>
             <form class="standard_form">
                 <label for="color_input">Kolor pikseli: </label>
@@ -29,16 +29,16 @@
             </form>
             <form class="standard_form">
                 <label for="sel_frac">Wybór rysunku:</label>
-                <select name="selected_fractals" id="sel_frac">
+                <select name="selected_fractals" id="sel_frac" onchange="size_bar_disp()">
                     <option value="sierpinski">Trójkąt Sierpinskiego</option>
                     <option value="barnsleyFern">Paproć Barnsleya</option>
-                    <option value="pentagon">Pentagon</option>
+<!--                    <option value="pentagon">Pentagon</option>-->
                 </select>
             </form>
 
                 <button  onclick="draw()">Rysuj</button>
 
-            <form class="standard_form">
+            <form class="standard_form" id="sizebar" >
                 <label for="plotSize">Rozmiar rysunku:</label>
                 <input oninput="resizeCanvas(this.value)" type="range" min="100" max="800" value="600" class="slider" id="plotSize">
             </form>
@@ -50,12 +50,12 @@
         </div>
 
 
-        <article class="main">
+        <div class="main">
             <canvas id="graphCanvas"></canvas>
-        </article>
+        </div>
 
         <div class="pop-up" id="info">
-            <input type="button" class="close-icon" onclick="about_hide()">
+            <input type="button" class="close-icon" onclick="about_hide()" value=".">
             <article>
                 <h3>Fraktale</h3>
                 <p>Słowo fraktal pochodzi od łacińskiego słowa <i>fractus</i>, co
