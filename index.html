@@ -44,6 +44,7 @@
             </form>
 
             <button  onclick="about_disp()">O projekcie</button>
+            <button onclick="doc_disp()">Dokumentacja</button>
 
 
         </div>
@@ -97,7 +98,47 @@
                 <p><span class="math inline">\(f_3(x,y) = (0.2 x + 0.26y, 0.23x + 0.22y + 1.6)\)</span></p>
                 <p><span class="math inline">\(f_4(x,y) = (0, 0.16y)\)</span></p>
                 <img src="images/zlotapaproc.png" alt="">
+                <img title="Zbiór Mandelbrota" src="images/Mandel.jpg" alt="Zbiór Mandelbrota">
+                <p>Powyższy rysunek przedstawia tzw. zbiór Mandelbrota. Jest to jeden z najpopularniejszych fraktali. Po raz pierwszy zdefiniowany
+                    i narysowany przez Roberta W. Brooksa w 1978 roku.</p>
             </article>
+
+            <article>
+                <h3>Gra w chaos</h3>
+                <p>Jest to matematyczne pojęcie, które opisuje specyficzny sposób wytwarzania fraktali. W ogólności polega na
+                    tym, że startując od dowolnego punktu losujemy wierzchołek wielokąta i stawiamy nowy punkt w ułamku odległości pomiędzy
+                    poprzednimi punktami. Następnie wyznaczamy kolejny punkt pomiędzy otrzymanym punktem, a losowym wierzchołkiem.
+                    Po odpowiednio dużej ilości iteracji tworzy się fraktal. Taką technikę zastosowano w tym projekcie.
+
+                </p>
+
+                <!--                <img src="images/Sierpinski_Chaos.gif">-->
+            </article>
+
+            <article>
+                <h3>Trójkąt Sierpińskiego</h3>
+                <p>
+                    Trójkąt Sierpnińskiego został odkryty przez polskiego matematyka Wacława Sierpińskiego w 1915 roku, czyli
+                    znacznie wcześniej niż nieco bardziej znany zbiór Mandelbrota. W przeciwieństwie do Mandelbrota trójkąt Sierpniśkiego jest
+                    samopodobny. Został wygenerowany zgodnie z zasadami gry w chaos, gdzie ułamek odległości pomiędzy punktami wynosił 0.5.
+                </p>
+
+                <img src="images/Sierpinski-zoom.gif" alt="">
+            </article>
+
+            <article>
+                <h3>Paproć Barnsleya</h3>
+                Jest to kolejny fraktal, który odkrył Michael F. Barnsley. Jego nazwa bierze się z podobieństwa do liści paproci.
+                Został wygenerowany z prawdopodobieństwem odpowiednio 85%, 7%, 7%, 1% ze wzorów:
+                <p><span class="math inline">\(f_1(x,y) = (0.85x + 0.04y, -0.04x + 0.85y + 1.6)\)</span></p>
+                <p><span class="math inline">\(f_2(x,y) = (-0.15x + 0.25y, 0.26x + 0.24y + 0.44)\)</span></p>
+                <p><span class="math inline">\(f_3(x,y) = (0.2 x + 0.26y, 0.23x + 0.22y + 1.6)\)</span></p>
+                <p><span class="math inline">\(f_4(x,y) = (0, 0.16y)\)</span></p>
+                <img src="images/zlotapaproc.png" alt="">
+            </article>
+        </div>
+        <div class="pop-up" id="doc">
+            <iframe src="TI_Projekt1_dokumentacja.pdf" title="Dokumentacja"></iframe>
         </div>
         <div onclick="about_hide()" class="dark" id="sub_info"></div>
 

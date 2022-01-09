@@ -88,7 +88,16 @@ function about_hide()
 {
 	document.getElementById('info').style.display='none';
 	document.getElementById('sub_info').style.display='none';
+	document.getElementById('doc').style.display='none';
 }
+
+function doc_disp()
+{
+	document.getElementById('doc').style.display='block';
+	document.getElementById('sub_info').style.display='block';
+}
+
+
 
 
 
