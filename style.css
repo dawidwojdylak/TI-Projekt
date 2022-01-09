@@ -16,6 +16,7 @@ button {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 4px;
+    min-width: 150px;
 }
 
 button:hover {

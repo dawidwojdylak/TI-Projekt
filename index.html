@@ -36,13 +36,14 @@
                 </select>
             </form>
 
-                <button  onclick="draw()">Rysuj</button>
+
 
             <form class="standard_form" id="sizebar" >
                 <label for="plotSize">Rozmiar rysunku:</label>
                 <input oninput="resizeCanvas(this.value)" type="range" min="100" max="800" value="600" class="slider" id="plotSize">
             </form>
-
+            
+            <button  onclick="draw()">Rysuj</button>
             <button  onclick="about_disp()">O projekcie</button>
             <button onclick="doc_disp()">Dokumentacja</button>
 
